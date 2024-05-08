@@ -2,7 +2,7 @@ import { getAllMovies } from "../data/movies";
 import MovieCard from "./MovieCard";
 const MovieList = () => {
   const movies = getAllMovies();
-  console.log(movies);
+  
   return (
     <>
       {/* Content */}

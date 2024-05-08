@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const App = () => {
   const [cartData,setCartData] = useState([])
+  console.log(cartData.length)
   return (
     <>
       <MovieContext.Provider value={{cartData,setCartData}}>
