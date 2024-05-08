@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const CartDetails = ({onClose}) => {
+const CartDetails = ({ onClose }) => {
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -55,10 +55,7 @@ const CartDetails = ({onClose}) => {
               </div>
             </div>
             <div className="flex items-center justify-end gap-2">
-              <button
-                className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm"
-                
-              >
+              <button className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm">
                 <img
                   src="./assets/icons/checkout.svg"
                   width={24}

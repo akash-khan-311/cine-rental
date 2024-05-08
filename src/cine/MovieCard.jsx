@@ -4,6 +4,7 @@ import { getImgUrl } from "../utils/cine-utility";
 import MovieDetailsModal from "./MovieDetailsModal";
 import Rating from "./Rating";
 
+
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -14,6 +15,12 @@ const MovieCard = ({ movie }) => {
   const handleMovieSelection = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
+  };
+  
+  const handleAddToCart = (event, movie) => {
+    event.stopPropagation();
+    
+    
   };
   return (
     <>
@@ -34,12 +41,13 @@ const MovieCard = ({ movie }) => {
             <div className="flex items-center space-x-1 mb-5">
               <Rating value={movie.rating} />
             </div>
-            <a
-              className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-              href="#"
+            <button
+              onClick={(event) => handleAddToCart(event, movie)}
+              className="bg-primary w-full rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
+              
             >
               <span>${movie.price} | Add to Cart</span>
-            </a>
+            </button>
           </figcaption>
         </button>
       </figure>
