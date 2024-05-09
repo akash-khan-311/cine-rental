@@ -9,17 +9,17 @@ const CartDetails = ({ onClose }) => {
   const {cartData,setCartData} = useContext(MovieContext)
   const handleRemoveFromCart = (id) => {
     const RemainingMovies = cartData.filter(item=> item.id !== id)
-    setCartData(RemainingMovies)
+    setCartData([...RemainingMovies])
   }
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[790px] p-4 max-h-[90vh] overflow-auto">
           <div className="bg-white shadow-md dark:bg-[#12141D] rounded-2xl overflow-hidden p-5 md:p-9">
-            <h2 className="text-2xl text-white lg:text-[30px] mb-10 font-bold">
+            <h2 className="text-2xl dark:text-white lg:text-[30px] mb-10 font-bold">
               Your Carts
             </h2>
-            <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
+            <div className="space-y-4 max-h-[450px] overflow-auto mb-10 lg:mb-14">
               {cartData.length ? (
                 cartData.map((movie) => (
                   <div key={movie.id} className="grid grid-cols-[1fr_auto] gap-4">
@@ -32,13 +32,13 @@ const CartDetails = ({ onClose }) => {
                         height={50}
                       />
                       <div>
-                        <h3 className="text-base text-white md:text-xl font-bold">
+                        <h3 className="text-base dark:text-white md:text-xl font-bold">
                           {movie.title}
                         </h3>
                         <p className="max-md:text-xs text-[#575A6E]">
                           {movie.genre}
                         </p>
-                        <span className="max-md:text-xs text-white">${movie.price}</span>
+                        <span className="max-md:text-xs dark:text-white">${movie.price}</span>
                       </div>
                     </div>
                     <div className="flex justify-between gap-4 items-center">
