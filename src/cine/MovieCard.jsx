@@ -3,9 +3,8 @@ import { useContext, useState } from "react";
 import { getImgUrl } from "../utils/cine-utility";
 import MovieDetailsModal from "./MovieDetailsModal";
 import Rating from "./Rating";
-import {MovieContext} from '../context/index'
+import { MovieContext } from "../context/index";
 import Swal from "sweetalert2";
-
 
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
@@ -18,26 +17,24 @@ const MovieCard = ({ movie }) => {
     setSelectedMovie(movie);
     setShowModal(true);
   };
-  
-  const { cartData, setCartData } = useContext(MovieContext);
+
+  const { state, dispatch } = useContext(MovieContext);
   const handleAddToCart = (event, movie) => {
     event.stopPropagation();
-    const found = cartData.find((item) => item.id === movie.id);
+    const found = state.cartData.find((item) => item.id === movie.id);
 
-    if(!found){
-      setCartData([...cartData, movie])
-    }else {
+    if (!found) {
+      dispatch({ type: "ADD_TO_CART", payload: { ...movie } });
+    } else {
       Swal.fire({
         position: "center",
         icon: "error",
         title: "Already Added",
-        text: 'This Movie Already Has Been Added',
+        text: "This Movie Already Has Been Added",
         showConfirmButton: false,
         timer: 1500,
       });
     }
-    
-    
   };
   return (
     <>
@@ -62,12 +59,12 @@ const MovieCard = ({ movie }) => {
             <div className="flex items-center space-x-1 mb-5">
               <Rating value={movie.rating} />
             </div>
-            <button
+            <a
               onClick={(event) => handleAddToCart(event, movie)}
               className="bg-primary w-full rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
             >
               <span>${movie.price} | Add to Cart</span>
-            </button>
+            </a>
           </figcaption>
         </button>
       </figure>

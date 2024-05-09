@@ -17,7 +17,7 @@ const Sidebar = () => {
                 src={Trending}
                 width={24}
                 height={24}
-                alt
+                alt='Trending'
               />
               <span>Trending</span>
             </a>
@@ -31,7 +31,7 @@ const Sidebar = () => {
                 src={NewRelease}
                 width={24}
                 height={24}
-                alt
+                alt="New Release"
               />
               <span>New Releases</span>
             </a>
@@ -45,7 +45,7 @@ const Sidebar = () => {
                 src={CommingSoon}
                 width={24}
                 height={24}
-                alt
+                alt="Comming Soon"
               />
               <span>Coming Soon</span>
             </a>
@@ -59,7 +59,7 @@ const Sidebar = () => {
                 src={Favourite}
                 width={24}
                 height={24}
-                alt
+                alt="Favourites"
               />
               <span>Favourites</span>
             </a>
@@ -73,7 +73,7 @@ const Sidebar = () => {
                 src={WatchLater}
                 width={24}
                 height={24}
-                alt
+                alt="Watch Later"
               />
               <span>Watch Later</span>
             </a>

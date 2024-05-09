@@ -7,7 +7,7 @@ import ShoppingCart from "./assets/shopping-cart.svg";
 import CartDetails from "./cine/CartDetails";
 import { MovieContext, ThemeContext } from "./context";
 const Header = () => {
-  const {cartData} = useContext(MovieContext) 
+  const {state} = useContext(MovieContext) 
   const [showCart, setShowCart] = useState(false);
   const handleCartShow = () => {
     setShowCart(true);
@@ -29,8 +29,16 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <button onClick={()=> setDarkMode(!darkMode)} className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block">
-                <img src={darkMode ? Sun : Moon} width={24} height={24} alt="Moon" />
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
+              >
+                <img
+                  src={darkMode ? Sun : Moon}
+                  width={24}
+                  height={24}
+                  alt="Moon"
+                />
               </button>
             </li>
             <li>
@@ -44,9 +52,9 @@ const Header = () => {
                   height={24}
                   alt="Shopping Cart"
                 />
-                {cartData.length > 0 && (
+                {state.cartData.length > 0 && (
                   <span className="rounded-full absolute top-[-12px] left-[23px] bg-[#12cf71a8] text-white text-center p-[1px] w-[25px] h-[25px]">
-                    {cartData.length}
+                    {state.cartData.length}
                   </span>
                 )}
               </button>

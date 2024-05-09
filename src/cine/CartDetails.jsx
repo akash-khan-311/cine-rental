@@ -6,10 +6,10 @@ import { getImgUrl } from "../utils/cine-utility";
 
 /* eslint-disable react/prop-types */
 const CartDetails = ({ onClose }) => {
-  const {cartData,setCartData} = useContext(MovieContext)
+  const {state,dispatch} = useContext(MovieContext)
   const handleRemoveFromCart = (id) => {
-    const RemainingMovies = cartData.filter(item=> item.id !== id)
-    setCartData([...RemainingMovies])
+    
+    dispatch({type:'REMOVE_FROM_CART',payload:{id}})
   }
   return (
     <>
@@ -20,8 +20,8 @@ const CartDetails = ({ onClose }) => {
               Your Carts
             </h2>
             <div className="space-y-4 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-              {cartData.length ? (
-                cartData.map((movie) => (
+              {state.cartData.length ? (
+                state.cartData.map((movie) => (
                   <div key={movie.id} className="grid grid-cols-[1fr_auto] gap-4">
                     <div className="flex items-center gap-4">
                       <img
@@ -60,7 +60,7 @@ const CartDetails = ({ onClose }) => {
               )}
             </div>
             <div className="flex items-center justify-end gap-2">
-              {cartData.length ? (
+              {state.cartData.length ? (
                 <button className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm">
                   <img
                     src={CheckoutIcon}
